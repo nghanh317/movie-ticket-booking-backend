@@ -1,4 +1,7 @@
 
+const login = (req, res) =>{
+  res.send("login")
+}
 const getHomePage = (req, res) => {
   res.send('Home page')
 }
@@ -43,5 +46,6 @@ module.exports = {
   getAddShowPage, 
   getListShowsPage, 
   getListBookingsPage,
-  getLoginPage
+  getLoginPage,
+  login
 }
