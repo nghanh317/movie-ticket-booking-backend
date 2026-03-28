@@ -41,6 +41,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoute');
+const { createAdmin } = require('./services/authService');
 
 const app = express();
 const port = process.env.PORT || 8083
@@ -53,7 +54,7 @@ app.use('/api/auth', authRoutes);
 
 const startServer = async () => {
     await connectDB();
-
+    await createAdmin();
     app.listen(process.env.PORT, () => {
         console.log(`Example app listening on port ${port}`)
     });
