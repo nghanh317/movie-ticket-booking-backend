@@ -38,4 +38,21 @@ const login = async ({ email, password }) => {
     return { user, token };
 };
 
-module.exports = { register, login };
+const createAdmin = async () => {
+    const admin = await User.findOne({ email: "admin@gmail.com" });
+
+    if (!admin) {
+        const hash = await bcrypt.hash("123456", 10);
+
+        await User.create({
+            name: "Admin",
+            email: "admin@gmail.com",
+            password: hash,
+            role: "admin"
+        });
+
+        console.log("Admin created");
+    }
+};
+
+module.exports = { register, login, createAdmin };
