@@ -54,7 +54,6 @@ app.use('/api/auth', authRoutes);
 
 const startServer = async () => {
     await connectDB();
-    await createAdmin();
     app.listen(process.env.PORT, () => {
         console.log(`Example app listening on port ${port}`)
     });
